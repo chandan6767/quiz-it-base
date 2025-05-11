@@ -1,20 +1,19 @@
 import React from "react";
 
+import BrowserPreview from "@bigbinary/neeto-molecules/BrowserPreview";
 import { Typography } from "@bigbinary/neetoui";
 
 const Home = () => (
   <main className="flex h-screen flex-col items-center justify-center gap-6">
-    <Typography className="text-blue-500" style="h1">
-      QuizIt Starter
-    </Typography>
-    <a
-      className="rounded-2xl bg-slate-800 px-6 py-3 text-white shadow-md"
-      href="https://github.com/chandan6767/quiz-it-base"
-      rel="noreferrer"
-      target="_blank"
-    >
-      GitHub
-    </a>
+    <div className="w-96">
+      <BrowserPreview className="p-6">
+        <div className="flex h-full items-center justify-center">
+          <Typography className="text-center" style="body2">
+            This is the body of the browser preview
+          </Typography>
+        </div>
+      </BrowserPreview>
+    </div>
   </main>
 );
 
