@@ -17,12 +17,13 @@ FileUtils.chdir APP_ROOT do
   system! "gem install bundler --conservative"
   system("bundle check") || system!("bundle install")
 
-  # Install JavaScript dependencies
-  system("yarn check --check-files") || system!("yarn install")
+  puts "\n== Executing yarn =="
+  system!("bin/yarn")
 
-  puts "\n== Copying sample files =="
-  unless File.exist?("config/database.yml")
-    FileUtils.cp "config/database.yml.sample", "config/database.yml"
+  puts "\n== Creating config/database.yml file =="
+  if !ENV["DOCKER_ENV"]
+    system! "rm -f config/database.yml"
+    system! "cp config/database.yml.postgresql config/database.yml"
   end
 
   puts "\n== Preparing database =="
